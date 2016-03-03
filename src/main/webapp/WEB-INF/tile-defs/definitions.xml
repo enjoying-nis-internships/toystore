@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN" "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+ 	<definition name="user" extends="defaultTemplate">
+		<put-attribute name="title" value="User page" />
+    	<put-attribute name="content" value="/WEB-INF/view/user.jsp"/>    	
+	</definition>
+ 	<definition name="home" extends="defaultTemplate">
+		<put-attribute name="title" value="Homepage" />
+    	<put-attribute name="content" value="/WEB-INF/view/home.jsp"/>    	
+	</definition>
+	<definition name="milos" extends="defaultTemplate">
+		<put-attribute name="title" value="Milos" />
+    	<put-attribute name="content" value="/WEB-INF/view/milos.jsp"/>    	
+	</definition>
+ 	<definition name="productlist" extends="defaultTemplate">
+		<put-attribute name="title" value="ProductList" />
+    	<put-attribute name="content" value="/WEB-INF/view/productlist.jsp"/>    	
+	</definition>
+</tiles-definitions>
