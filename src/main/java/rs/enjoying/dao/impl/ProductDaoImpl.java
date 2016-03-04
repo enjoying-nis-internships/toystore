@@ -20,5 +20,15 @@ public class ProductDaoImpl extends AbstractDao<Long, Product> implements Produc
 
 		return list;
 	}
+	
+	@Override
+	public Product getProductForId(Long productId)
+	{
+		Product p = (Product) getSession()
+				.createQuery("FROM Product p WHERE p.id = :productId").setParameter("productId", productId)
+				.uniqueResult();
+		
+		return p;
+	}
 
 }

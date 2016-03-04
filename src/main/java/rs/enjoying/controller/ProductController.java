@@ -30,5 +30,13 @@ public class ProductController {
 		
 		return "productlist";
 	}
+	
+	@RequestMapping(value = "/product/{productId}", method = RequestMethod.GET)
+	public String getProduct(@PathVariable Long productId, Model model, HttpServletRequest request)
+	{
+		ProductData pd = productService.getProductForId(productId);
+		model.addAttribute("productDetails", pd);
 		
+		return "productdetails";
+	}
 }
