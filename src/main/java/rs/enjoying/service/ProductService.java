@@ -6,6 +6,5 @@ import rs.enjoying.data.ProductData;
 
 public interface ProductService {
 
-	public List<ProductData> getProductsForCategoryId(int categoryId);
-	public List<ProductData> getProductsForCategoryName(String categoryName);
+	public List<ProductData> getProductsForCategoryId(Long categoryId);
 }
