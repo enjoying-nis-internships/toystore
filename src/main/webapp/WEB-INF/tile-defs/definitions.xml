@@ -23,4 +23,8 @@
 		<put-attribute name="title" value="ProductDetails" />
     	<put-attribute name="content" value="/WEB-INF/view/productdetails.jsp"/>    	
 	</definition>
+	<definition name="registration" extends="defaultTemplate">
+		<put-attribute name="title" value="Registration" />
+    	<put-attribute name="content" value="/WEB-INF/view/registration.jsp"/>    	
+	</definition>
 </tiles-definitions>

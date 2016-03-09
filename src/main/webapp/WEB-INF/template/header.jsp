@@ -25,6 +25,7 @@
               <li><a href="<c:url value="/cart"/>"><spring:message code="header.label.cart"/></a></li>
               <li><a href="<c:url value="/login"/>"><spring:message code="header.label.login"/></a></li>
               <li><a href="<c:url value="/logout"/>"><spring:message code="header.label.logout"/></a></li>
+              <li><a href="<c:url value="/registration"/>"><spring:message code="header.label.registration"/></a></li>
               <li><p id="welcome_user"><spring:message code="header.label.welcome"/> ${name}</p></li>
             </ul>
           </div><!--/.nav-collapse -->

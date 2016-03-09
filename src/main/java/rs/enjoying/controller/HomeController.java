@@ -30,4 +30,10 @@ public class HomeController {
 		request.setAttribute("user", user);
 		return "user";
 	}
+	@RequestMapping("/registration")
+	public String getRegistration(HttpServletRequest request) {
+		
+		return "registration";
+	}
+	
 }
