@@ -7,5 +7,6 @@ import rs.enjoying.model.Product;
 public interface ProductDao {
 	
 	public List<Product> getProductsForCategoryId(Long categoryId);
-	public Product getProductById(Long productId);
+	public Product getProductForId(Long productId);
+	
 }

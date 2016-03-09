@@ -19,4 +19,8 @@
 		<put-attribute name="title" value="ProductList" />
     	<put-attribute name="content" value="/WEB-INF/view/productlist.jsp"/>    	
 	</definition>
+	<definition name="productdetails" extends="defaultTemplate">
+		<put-attribute name="title" value="ProductDetails" />
+    	<put-attribute name="content" value="/WEB-INF/view/productdetails.jsp"/>    	
+	</definition>
 </tiles-definitions>

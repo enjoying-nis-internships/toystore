@@ -10,12 +10,12 @@ public class ProductData {
 	private Double price;
 	private String pictureUrl;
 	
-	
+
 	public String getPictureUrl() {
 		return pictureUrl;
 	}
-	public void setPictureUrl(String url) {
-		pictureUrl = url;
+	public void setPictureUrl(String pictureUrl) {
+		this.pictureUrl = pictureUrl;
 	}
 	public long getId() {
 		return id;

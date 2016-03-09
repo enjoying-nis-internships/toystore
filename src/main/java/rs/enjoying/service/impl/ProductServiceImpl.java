@@ -40,6 +40,18 @@ public class ProductServiceImpl implements ProductService{
 		
 		return resultList;
 	}
+
+	@Override
+	public ProductData getProductForId(Long productId) {
+		ProductData productData = new ProductData();
+		Product product = productDao.getProductForId(productId);
+		
+		productConverter.copyFromEntityToData(product, productData);
+		
+		return productData;
+	}
+
+	
 	
 	@Override
 	public ProductData getProductById(Long productId)

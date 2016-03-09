@@ -14,7 +14,7 @@
 		<link href="<c:url value="/resources/css/header.css"/>" rel="stylesheet" type="text/css"/>
 		<link href="<c:url value="/resources/css/home.css"/>" rel="stylesheet" type="text/css"/>
 		<link href="<c:url value="/resources/css/bootstrap.min.css"/>" rel="stylesheet" type="text/css"/>
-		<link href="<c:url value="/resources/css/productDetails.css"/>" rel="stylesheet" type="text/css"/>
+		<link href="<c:url value="/resources/css/productList.css"/>"rel="stylesheet" type="text/css"/>
 		<meta charset="utf-8">
 		
 	</head>
