@@ -8,8 +8,15 @@ public class ProductData {
 	private String description;
 	private String brand;
 	private Double price;
+	private String pictureUrl;
 	
 	
+	public String getPictureUrl() {
+		return pictureUrl;
+	}
+	public void setPictureUrl(String url) {
+		pictureUrl = url;
+	}
 	public long getId() {
 		return id;
 	}

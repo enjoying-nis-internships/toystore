@@ -1,20 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
+	<classpathentry kind="output" path="bin"/>
 	<classpathentry kind="src" path="src/main/java"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="con" path="org.springsource.ide.eclipse.gradle.classpathcontainer" exported="true">
-		<attributes>
-			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
-		</attributes>
-	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
-	<classpathentry kind="con" path="org.eclipse.jst.server.core.container/org.eclipse.jst.server.tomcat.runtimeTarget/Apache Tomcat v8.0">
-		<attributes>
-			<attribute name="owner.project.facets" value="jst.web"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
-	<classpathentry kind="output" path="bin"/>
 	<classpathentry sourcepath="C:/Users/stefa/.gradle/caches/modules-2/files-2.1/org.springframework/spring-webmvc/4.1.6.RELEASE/74e437c914201b70db2022052bc35611ad4beb9a/spring-webmvc-4.1.6.RELEASE-sources.jar" kind="lib" path="C:/Users/stefa/.gradle/caches/modules-2/files-2.1/org.springframework/spring-webmvc/4.1.6.RELEASE/e1ee19a5359f214d65cc18972df8aba17ce1e423/spring-webmvc-4.1.6.RELEASE.jar">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.nondependency" value=""/>
