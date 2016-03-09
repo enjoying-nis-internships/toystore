@@ -31,4 +31,6 @@ public class ProductDaoImpl extends AbstractDao<Long, Product> implements Produc
 		return p;
 	}
 
+	
+
 }

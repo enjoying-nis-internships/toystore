@@ -1,0 +1,6 @@
+#product_name{
+	width:90%;
+	white-space: nowrap;
+  	overflow: hidden;
+  	text-overflow: ellipsis;
+}

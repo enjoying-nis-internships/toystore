@@ -23,12 +23,14 @@
 		<put-attribute name="title" value="ProductDetails" />
     	<put-attribute name="content" value="/WEB-INF/view/productdetails.jsp"/>    	
 	</definition>
+<<<<<<< HEAD
 	<definition name="registration" extends="defaultTemplate">
 		<put-attribute name="title" value="Registration" />
     	<put-attribute name="content" value="/WEB-INF/view/registration.jsp"/>    	
-	</definition>
-<definition name="cart" extends="defaultTemplate">
+=======
+	<definition name="cart" extends="defaultTemplate">
 		<put-attribute name="title" value="Cart" />
     	<put-attribute name="content" value="/WEB-INF/view/cart.jsp"/>    	
+>>>>>>> eb5e38368c63fc5f7685c5217440402e4b6c8c8c
 	</definition>
 </tiles-definitions>

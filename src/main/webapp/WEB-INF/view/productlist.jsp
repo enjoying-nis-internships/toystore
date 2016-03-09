@@ -13,11 +13,13 @@
  	<div id="productListingContainer">
 	 	<div id="productListing">
 		<c:forEach items="${productList}" var="product">
-		<a href="<c:url value="/product/${product.id}"/>">
+		
 			<div class="productContainer" >
-				<div class="productName">
-					${product.name}
-				</div>
+				<a href="<c:url value='/product/${product.id}' />">
+					<div class="productName">
+						${product.name}
+					</div>
+				</a>
 				<div class="productImage">
 					<c:if test="${not empty product.pictureUrl}">
 						<img src="<c:url value='${product.pictureUrl}' />" />
@@ -25,13 +27,34 @@
 				</div>
 				<div class="productPrice">
 					<spring:message code="productlist.price"/>${product.price}
-					<button id="btnCart" type="button" class="btn-success">Add to cart</button> 
+					<button id="btnCart" type="submit" class="btn-success" onclick="addToCart(${product.id});">Add to cart</button>
 			 	</div>
 			</div>
-			</a>
+			
 		</c:forEach>
 		</div>
 	</div>
 	<div class="clearfix"></div>
+	<script>
+		function addToCart(pId) {
+			var data = {}
+			data["productId"] = pId;
+			data["quantity"] = 1;
+			
+			$.ajax({
+				type : "POST",
+				url : "<c:url value='/cart/add' />",
+				data : data,
+				timeout : 100000,
+				success : function(data) {
+					console.log("SUCCESS: ", data);
+					alert("Successfully added to cart!");
+				},
+				error : function(e) {
+					console.log("ERROR: ", e);
+				}
+			});
+		}
+	</script>
   </body>
 </html>
