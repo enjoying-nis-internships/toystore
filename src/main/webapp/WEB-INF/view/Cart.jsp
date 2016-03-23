@@ -11,6 +11,11 @@
 </head>
 <body>
 <div class="container">
+	<c:if test="${cart != null}">
+		<c:if test="${cart.size() == 0}">
+			Nothing found in cart.
+		</c:if>
+		<c:if test="${cart.size() > 0}">
 	<table id="cart" class="table table-hover table-condensed">
     				<thead>
 						<tr>
@@ -22,26 +27,27 @@
 						</tr>
 					</thead>
 					<tbody>
-						<tr>
+						<c:forEach items="${cart}" var="item">
+							<tr>
 							<td data-th="Product">
 								<div class="row">
-									<div class="col-sm-2 hidden-xs"><img src="http://placehold.it/100x100" alt="..." class="img-responsive"/></div>
+									<div class="col-sm-2 hidden-xs"><img src="<c:url value="${item.productData.pictureUrl}" />" alt="..." class="img-responsive"/></div>
 									<div class="col-sm-10">
-										<h4 class="nomargin">Product 1</h4>
-										<p>Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Lorem ipsum dolor sit amet.</p>
+										<h4 class="nomargin">${item.productData.name}</h4>
+										<p>${item.productData.description}</p>
 									</div>
 								</div>
 							</td>
-							<td data-th="Price">$1.99</td>
+							<td id="Price-${item.productData.id}" data-th="Price">$${item.productData.price }</td>
 							<td data-th="Quantity">
-								<input type="number" class="form-control text-center" value="1">
+								<input id="quan-${item.productData.id}" type="number" min="1" class="form-control text-center" value="${item.quantity}" onclick="update(${item.productData.id})">
 							</td>
-							<td data-th="Subtotal" class="text-center">1.99</td>
+							<td id="Subtotal-${item.productData.id}" data-th="Subtotal" class="text-center">$${item.productData.price * item.quantity}</td>
 							<td class="actions" data-th="">
-								<button class="btn btn-info btn-sm"><i class="fa fa-refresh"></i></button>
-								<button class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i></button>								
+								<button type="button" class="btn btn-danger btn-sm" onclick="rem(${item.productData.id})">Remove</button>								
 							</td>
 						</tr>
+						</c:forEach>
 					</tbody>
 					<tfoot>
 						<tr class="visible-xs">
@@ -50,11 +56,76 @@
 						<tr>
 							<td><a href="#" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continue Shopping</a></td>
 							<td colspan="2" class="hidden-xs"></td>
-							<td class="hidden-xs text-center"><strong>Total $1.99</strong></td>
+							<td class="hidden-xs text-center"><strong id="total">Total $${total}</strong></td>
 							<td><a href="#" class="btn btn-success btn-block">Checkout <i class="fa fa-angle-right"></i></a></td>
 						</tr>
 					</tfoot>
 				</table>
+		</c:if>
+	</c:if>
+	<c:if test="${cart == null}">
+		Nothing found in cart.
+	</c:if>
 </div>
+		<script>
+			function update(id) {
+				var basePrice = parseFloat($('#Price-'+id).html().split('$')[1]);
+				var q = $('#quan-'+id).val();
+
+				$('#Subtotal-'+id).html('$' + (basePrice * q).toString());
+				updateTotal();
+				
+				setQuantity(id, q);
+			}
+			
+			function updateTotal() {
+				var ts = $('td[id^="Subtotal-"]');
+				var total = 0.0;
+				
+				for(var i = 0; i < ts.length; i++) {
+					total = total + parseFloat(ts[i].innerHTML.split('$')[1]);
+				}
+				
+				$('#total').html('Total $'+total);
+			}
+			
+			function setQuantity(pId, q) {
+				var data = {}
+				data["productId"] = pId;
+				data["quantity"] = q;
+				
+				$.ajax({
+					type : "POST",
+					url : "<c:url value='/cart/setQuantity' />",
+					data : data,
+					timeout : 100000,
+					success : function(data) {
+						console.log("SUCCESS: ", data);
+					},
+					error : function(e) {
+						console.log("ERROR: ", e);
+					}
+				});
+			}
+			
+			function rem(pId) {
+				var data = {}
+				data["productId"] = pId;
+				
+				$.ajax({
+					type : "POST",
+					url : "<c:url value='/cart/remove' />",
+					data : data,
+					timeout : 100000,
+					success : function(data) {
+						console.log("SUCCESS: ", data);
+						location.reload();
+					},
+					error : function(e) {
+						console.log("ERROR: ", e);
+					}
+				});
+			}
+		</script>
 </body>
 </html>
