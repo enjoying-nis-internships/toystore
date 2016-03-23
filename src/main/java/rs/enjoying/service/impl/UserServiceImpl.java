@@ -30,5 +30,10 @@ public class UserServiceImpl implements UserService {
 		}
 		return userData;
 	}
+
+	@Override
+	public void create(String firstname, String lastname, String email, String password, String username) {
+		userDao.create(firstname, lastname, email, password, username);
+	}
 	
 }

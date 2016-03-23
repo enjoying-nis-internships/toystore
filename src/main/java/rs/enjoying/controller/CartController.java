@@ -2,6 +2,7 @@ package rs.enjoying.controller;
 
 import java.awt.PageAttributes.MediaType;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -15,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import antlr.collections.List;
 import rs.enjoying.data.ProductData;
 import rs.enjoying.data.UserData;
 import rs.enjoying.model.Cart;
@@ -35,8 +35,19 @@ public class CartController {
 	public String getCart(Model model, HttpServletRequest request)
 	{
 		Cart cart = (Cart)request.getSession().getAttribute("cart");
+		ArrayList<ProductData> products = new ArrayList<ProductData>();
 		
-		model.addAttribute("cart", cart);
+		double total = 0;
+		for(CartEntry ce : cart.getEntries())
+		{
+			ProductData pd = productService.getProductForId((long)ce.getProductId());
+			ce.setProductData(pd);
+			
+			total += ce.getProductData().getPrice();
+		}
+		
+		model.addAttribute("cart", cart.getEntries());
+		model.addAttribute("total", total);
 		
 		return "cart";
 	}
@@ -53,12 +64,27 @@ public class CartController {
 		if(cart == null)
 		{
 			cart = new Cart();
+			cart.add(new CartEntry(productId, quantity));
+		}
+		else
+		{
+			boolean found = false;
+			ArrayList<CartEntry> entries = (ArrayList<CartEntry>) cart.getEntries();
+			for(int i = 0; i < entries.size(); i++)
+			{
+				if(entries.get(i).getProductId() == productId)
+				{
+					found = true;
+					break;
+				}
+			}
+			
+			if(!found) cart.add(new CartEntry(productId, quantity));
 		}
 		
-		cart.add(new CartEntry(productId, quantity));
 		request.getSession().setAttribute("cart", cart);
 		
-		return "yay!";
+		return "gg";
 	}
 	
 	@RequestMapping(value = "/cart/setQuantity", method = RequestMethod.POST)
@@ -87,6 +113,25 @@ public class CartController {
 		
 		request.getSession().setAttribute("cart", cart);
 		
-		return "yay!";
+		return "gg";
+	}
+	
+	@RequestMapping(value = "/cart/remove", method = RequestMethod.POST)
+	public @ResponseBody String removeFromCart(HttpServletRequest request, 
+			@RequestParam("productId") String pId)
+	{
+		Cart cart = (Cart)request.getSession().getAttribute("cart");
+		
+		for(int i = 0; i < cart.getEntries().size(); i++)
+		{
+			if(cart.getEntries().get(i).getProductId() == Integer.parseInt(pId))
+			{
+				cart.remove(cart.getEntries().get(i));
+			}
+		}
+		
+		request.getSession().setAttribute("cart", cart);
+		
+		return "gg";
 	}
 }

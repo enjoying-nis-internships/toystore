@@ -11,50 +11,46 @@
 		<p style="text-align:center;">Registration </p>
 		<div class="span7 offset5">
 		
-			<form name="registration_form" id='registration_form' class="form-inline">
+			<form name="registration_form" id='registration_form' class="form-inline" method="post">
 	
-		        <div >
-		            <label for="firstname" class="sr-only"></label>
+				<div>
+		            <input id="username" class="form-control input-group-lg reg_name" type="text" name="username"
+		                   title="Enter username"
+		                   placeholder="Username"/>
+		        </div>
+		        <br />
+		        <div>
 		            <input id="firstname" class="form-control input-group-lg reg_name" type="text" name="firstname"
 		                   title="Enter first name"
 		                   placeholder="First name"/>
 		        </div>
-		        <div class="form-group">
-		            <label for="lastname" class="sr-only"></label>
+		        <br />
+		        <div>
 		            <input id="lastname" class="form-control input-group-lg reg_name" type="text" name="lastname"
 		                   title="Enter last name"
 		                   placeholder="Last name"/>
 		        </div>
-				<div >
-			        <label for="age" class="sr-only"></label>
-			        <input id="age" class="form-control input-group-lg" type="text" autocapitalize='off' name="age"
-			               title="Enter age"
-			               placeholder="age"/>
-			    </div>
-			    <div >
-			        <label for="gender" class="sr-only"></label>
-			        <input id="gender" class="form-control input-group-lg" type="text" autocapitalize='off' name="gender"
-			               title="Enter gender"
-			               placeholder="gender"/>
-			    </div>
-			    <div >
-			        <label for="email" class="sr-only"></label>
+		        <br />
+			    <div>
 			        <input id="email" class="form-control input-group-lg" type="text" autocapitalize='off' name="email"
 			               title="Enter email"
-			               placeholder="email"/>
+			               placeholder="Email"/>
 			    </div>
-			
-			    <div >
-			        <label for="password" class="sr-only"></label>
+				<br />
+			    <div>
 			        <input id="password" class="form-control input-group-lg" type="password" name="password"
 			               title="Enter password"
 			               placeholder="Password"/>
 			    </div>
-			    <div >
-			        <label for="password" class="sr-only"></label>
-			        <input id="Cpassword" class="form-control input-group-lg" type="password" name="password"
+			    <br />
+			    <div>
+			        <input id="Cpassword" class="form-control input-group-lg" type="password" name="cpassword"
 			               title="Enter password"
-			               placeholder="ConfirmPassword"/>
+			               placeholder="Confirm Password"/>
+			    </div>
+			    <br />
+			    <div>
+			    	<input type="submit" class="btn btn-lg" value="Register"/>
 			    </div>
     		</form>
     	</div>

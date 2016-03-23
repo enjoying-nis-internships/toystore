@@ -27,4 +27,9 @@ public class Cart {
 	{
 		this.entries.add(ce);
 	}
+	
+	public void remove(CartEntry ce)
+	{
+		this.entries.remove(ce);
+	}
 }
