@@ -1,5 +1,7 @@
 package rs.enjoying.data;
 
+import com.sun.org.apache.xerces.internal.impl.dv.util.Base64;
+
 public class UserData {
 
 	private long id;
@@ -10,9 +12,14 @@ public class UserData {
 	
 	private String email;
 	
-	private String userName;
-	
+	private String username;
+
+
 	private String password;
+	
+	private byte[] image;
+	
+
 	
 
 	public String getPassword() {
@@ -21,14 +28,6 @@ public class UserData {
 
 	public void setPassword(String password) {
 		this.password = password;
-	}
-
-	public String getUserName() {
-		return userName;
-	}
-
-	public void setUserName(String userName) {
-		this.userName = userName;
 	}
 
 	public String getEmail() {
@@ -63,4 +62,20 @@ public class UserData {
 		this.lastName = lastName;
 	}
 	
+	
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+	
+	public String getImage() {
+		return Base64.encode(image);
+	}
+
+	public void setImage(byte[] image) {
+		this.image = image;
+	}
 }

@@ -31,4 +31,8 @@
 		<put-attribute name="title" value="Cart" />
     	<put-attribute name="content" value="/WEB-INF/view/cart.jsp"/>    	
 	</definition>
+	<definition name="userdetails" extends="defaultTemplate">
+		<put-attribute name="title" value="UserDetails" />
+    	<put-attribute name="content" value="/WEB-INF/view/userdetails.jsp"/>    	
+	</definition>
 </tiles-definitions>
