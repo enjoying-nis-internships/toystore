@@ -12,7 +12,7 @@
 		<div class="span7 offset5">
 		
 			<form name="registration_form" id='registration_form' class="form-inline">
-	
+		<div class="width:80%;">
 		        <div >
 		            <label for="firstname" class="sr-only"></label>
 		            <input id="firstname" class="form-control input-group-lg reg_name" type="text" name="firstname"
@@ -56,6 +56,7 @@
 			               title="Enter password"
 			               placeholder="ConfirmPassword"/>
 			    </div>
+		</div>
     		</form>
     	</div>
 	</div>
