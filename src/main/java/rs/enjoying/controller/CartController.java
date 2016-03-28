@@ -37,17 +37,25 @@ public class CartController {
 		Cart cart = (Cart)request.getSession().getAttribute("cart");
 		ArrayList<ProductData> products = new ArrayList<ProductData>();
 		
-		double total = 0;
-		for(CartEntry ce : cart.getEntries())
+		if(cart == null)  
 		{
-			ProductData pd = productService.getProductForId((long)ce.getProductId());
-			ce.setProductData(pd);
+			cart = new Cart();
+		}
+		else
+		{
+			double total = 0;
+			for(CartEntry ce : cart.getEntries())
+			{
+				ProductData pd = productService.getProductForId((long)ce.getProductId());
+				ce.setProductData(pd);
+				
+				total += ce.getProductData().getPrice();
+			}
 			
-			total += ce.getProductData().getPrice();
+			model.addAttribute("total", total);
 		}
 		
 		model.addAttribute("cart", cart.getEntries());
-		model.addAttribute("total", total);
 		
 		return "cart";
 	}
