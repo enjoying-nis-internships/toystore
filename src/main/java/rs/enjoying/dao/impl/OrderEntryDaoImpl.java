@@ -11,4 +11,9 @@ import rs.enjoying.model.Product;
 @Repository("orderEntryDao")
 public class OrderEntryDaoImpl extends AbstractDao<Long, OrderEntry> implements OrderEntryDao {
 
+	@Override
+	public void saveOrderEntry(OrderEntry orderEntry) {
+		persist(orderEntry);
+	}
+
 }

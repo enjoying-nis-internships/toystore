@@ -1,5 +1,7 @@
 package rs.enjoying.dao;
 
-public interface OrderEntryDao {
+import rs.enjoying.model.OrderEntry;
 
+public interface OrderEntryDao {
+	public void saveOrderEntry(OrderEntry orderEntry);
 }

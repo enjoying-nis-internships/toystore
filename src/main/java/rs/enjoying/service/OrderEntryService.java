@@ -1,5 +1,7 @@
 package rs.enjoying.service;
 
-public class OrderEntryService {
+import rs.enjoying.data.OrderEntryData;
 
+public interface OrderEntryService {
+	public void saveOrderEntry(OrderEntryData orderEntryData);
 }
