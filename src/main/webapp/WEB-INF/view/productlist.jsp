@@ -27,7 +27,7 @@
 				</div>
 				<div class="productPrice">
 					<spring:message code="productlist.price"/>${product.price}
-					<button id="btnCart" type="submit" class="btn-success" onclick="addToCart(${product.id});">Add to cart</button>
+					<button id="btnCart" type="submit" class="btn btn-success" onclick="addToCart(${product.id});">Add to cart</button>
 			 	</div>
 			</div>
 			
