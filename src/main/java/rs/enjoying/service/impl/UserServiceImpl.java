@@ -30,5 +30,13 @@ public class UserServiceImpl implements UserService {
 		}
 		return userData;
 	}
+
+	@Override
+	public void create(UserData user) {
+		User us=new User();
+		userConverter.copyFromDataToEntity(user, us);
+		
+		userDao.create(us);
+	}
 	
 }

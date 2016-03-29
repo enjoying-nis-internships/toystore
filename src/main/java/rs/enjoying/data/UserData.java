@@ -1,5 +1,8 @@
 package rs.enjoying.data;
 
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+
 public class UserData {
 
 	private long id;
@@ -10,10 +13,20 @@ public class UserData {
 	
 	private String email;
 	
-	private String userName;
+	private String username;
 	
 	private String password;
 	
+	private String cpassword;
+	
+
+	public String getCpassword() {
+		return cpassword;
+	}
+
+	public void setCpassword(String cpassword) {
+		this.cpassword = cpassword;
+	}
 
 	public String getPassword() {
 		return password;
@@ -23,12 +36,14 @@ public class UserData {
 		this.password = password;
 	}
 
-	public String getUserName() {
-		return userName;
+	
+
+	public String getUsername() {
+		return username;
 	}
 
-	public void setUserName(String userName) {
-		this.userName = userName;
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
 	public String getEmail() {

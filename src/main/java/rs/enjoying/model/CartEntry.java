@@ -3,16 +3,25 @@ package rs.enjoying.model;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
+import rs.enjoying.data.ProductData;
+
 @Component
 @Scope("session")
 public class CartEntry {
 	private int productId;
 	private int quantity;
 	
+	private ProductData productData;
+	
 	public CartEntry(int pId, int q)
 	{
 		productId = pId;
 		quantity = q;
+	}
+	
+	public ProductData getProductData()
+	{
+		return productData;
 	}
 	
 	public int getProductId() {
@@ -29,5 +38,9 @@ public class CartEntry {
 			this.quantity = quantity;
 		else
 			this.quantity = 1;
+	}
+
+	public void setProductData(ProductData pd) {
+		productData = pd;
 	}
 }
