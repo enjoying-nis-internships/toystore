@@ -11,7 +11,7 @@
 </head>
 <body>
 <div class="container">
-	<c:if test="${cart != null}">
+	<c:if test="${not empty cart}">
 		<c:if test="${cart.size() == 0}">
 			Nothing found in cart.
 		</c:if>
@@ -57,13 +57,13 @@
 							<td><a href="#" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continue Shopping</a></td>
 							<td colspan="2" class="hidden-xs"></td>
 							<td class="hidden-xs text-center"><strong id="total">Total $${total}</strong></td>
-							<td><a href="#" class="btn btn-success btn-block">Checkout <i class="fa fa-angle-right"></i></a></td>
+							<td><a href="<c:url value='/order/checkout' />" class="btn btn-success btn-block">Checkout <i class="fa fa-angle-right"></i></a></td>
 						</tr>
 					</tfoot>
 				</table>
 		</c:if>
 	</c:if>
-	<c:if test="${cart == null}">
+	<c:if test="${empty cart}">
 		Nothing found in cart.
 	</c:if>
 </div>

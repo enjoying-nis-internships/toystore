@@ -4,8 +4,6 @@ import java.awt.PageAttributes.MediaType;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
@@ -24,6 +22,8 @@ import rs.enjoying.model.User;
 import rs.enjoying.service.ProductService;
 import rs.enjoying.service.UserService;
 
+import javax.servlet.http.HttpServletRequest;
+
 @Controller
 @Scope("session")
 public class CartController {
@@ -37,17 +37,25 @@ public class CartController {
 		Cart cart = (Cart)request.getSession().getAttribute("cart");
 		ArrayList<ProductData> products = new ArrayList<ProductData>();
 		
-		double total = 0;
-		for(CartEntry ce : cart.getEntries())
+		if(cart == null)  
 		{
-			ProductData pd = productService.getProductForId((long)ce.getProductId());
-			ce.setProductData(pd);
+			cart = new Cart();
+		}
+		else
+		{
+			double total = 0;
+			for(CartEntry ce : cart.getEntries())
+			{
+				ProductData pd = productService.getProductForId((long)ce.getProductId());
+				ce.setProductData(pd);
+				
+				total += ce.getProductData().getPrice();
+			}
 			
-			total += ce.getProductData().getPrice();
+			model.addAttribute("total", total);
 		}
 		
 		model.addAttribute("cart", cart.getEntries());
-		model.addAttribute("total", total);
 		
 		return "cart";
 	}

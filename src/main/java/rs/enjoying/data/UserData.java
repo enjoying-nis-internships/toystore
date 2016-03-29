@@ -1,7 +1,6 @@
 package rs.enjoying.data;
 
-import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
+import com.sun.org.apache.xerces.internal.impl.dv.util.Base64;
 
 public class UserData {
 
@@ -14,19 +13,14 @@ public class UserData {
 	private String email;
 	
 	private String username;
-	
+
+
 	private String password;
 	
-	private String cpassword;
+	private byte[] image;
 	
 
-	public String getCpassword() {
-		return cpassword;
-	}
-
-	public void setCpassword(String cpassword) {
-		this.cpassword = cpassword;
-	}
+	
 
 	public String getPassword() {
 		return password;
@@ -34,16 +28,6 @@ public class UserData {
 
 	public void setPassword(String password) {
 		this.password = password;
-	}
-
-	
-
-	public String getUsername() {
-		return username;
-	}
-
-	public void setUsername(String username) {
-		this.username = username;
 	}
 
 	public String getEmail() {
@@ -78,4 +62,20 @@ public class UserData {
 		this.lastName = lastName;
 	}
 	
+	
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+	
+	public String getImage() {
+		return Base64.encode(image);
+	}
+
+	public void setImage(byte[] image) {
+		this.image = image;
+	}
 }

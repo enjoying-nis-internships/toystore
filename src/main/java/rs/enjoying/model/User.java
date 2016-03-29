@@ -25,6 +25,19 @@ public class User {
 	
 	@Column(name = "email")
 	private String email;
+	
+	@Column(name="image")
+	private byte[] image;
+
+	
+
+	public byte[] getImage() {
+		return image;
+	}
+
+	public void setImage(byte[] image) {
+		this.image = image;
+	}
 
 	public long getId() {
 		return id;
